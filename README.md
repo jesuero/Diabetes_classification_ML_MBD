@@ -7,3 +7,12 @@ Tasks:
 - Exploratory Data Analysis (EDA)
 - Identification and fitting process of classification models such as Logistic Regression, KNN, Decision Trees, SVM or Simple Neural Network.
 - Comparative analysis of the fitted models
+
+
+The fitted models are:
+- Logistic Regression
+- KNN
+- Decision Trees
+- Lineal SVM
+- Radial SVM
+- Simple Neural Network
