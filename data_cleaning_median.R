@@ -54,12 +54,24 @@ diabetes_tidy$BODYMASSINDEX[diabetes_tidy$BODYMASSINDEX == 0 & diabetes_tidy$DIA
 # mostramos los datos tras el tratamiento
 ggpairs(diabetes_tidy, aes(color=DIABETES))
 
-# analizar el valor de 99 de skinthickness
+# analizar el valor de 99 de skinthickness procemos a eliminarlo
 # no cuadra mucho, 99 es un valor extraño, podria ser error de medida
 # si skinthickness tan alto deberia tener mayor bodymassindex
+# procemos a eliminarlo
+diabetes_tidy = filter(diabetes_tidy, SKINTHICKNESS < 90)
+
+
+# Step 4 - Encode the categorical variables
+diabetes_tidy$DIABETES <- as.factor(diabetes_tidy$DIABETES)
+levels(diabetes_tidy$DIABETES)
+
+# Step 5 - Analyze the continuous variables: relations between variables
+ggpairs(diabetes_tidy, aes(color=DIABETES))
+PlotDataframe(diabetes_tidy, output.name = "DIABETES")
 
 # Step 6 - check out for class imbalances
 table(diabetes_tidy$DIABETES)
+prop.table(table(diabetes_tidy$DIABETES))
 
 # step 7 - data partition
 # convertimos la columna diabetes para sus valores sean YES or NO en vez de 0 o 1
